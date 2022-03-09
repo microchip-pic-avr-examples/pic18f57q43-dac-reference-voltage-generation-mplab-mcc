@@ -4,13 +4,13 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.pic18f57q43-dac-reference-voltage-generation-mplab-mcc",
-        "version": " ",
-        "displayName": "",
+        "version": "1.0.0",
+        "displayName": "Reference Voltage Generation using DAC of PIC18F57Q43 Microcontroller",
         "projectName": "pic18f57q43-dac-reference-voltage-generation-mplab-mcc",
         "shortDescription": "This code example demonstrates how to generate voltage reference to CMP using the built in DAC peripheral of the PIC microcontroller Some compatible PIC18F Q43 family of MCUs are PIC18F27Q43 PIC18F47Q43 PIC18F57Q43",
         "ide": {
             "name": "MPLAB X",
-            "semverRange": ">=6.00.0"
+            "semverRange": ">=6.0.0"
         },
         "compiler": [
             {
@@ -19,12 +19,12 @@
             }
         ],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "PIC18F-Q_DFP",
+            "semverRange": "^1.13.211"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC",
+            "semverRange": ">=5.1.0"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -36,9 +36,11 @@
                 "versionRange": "*"
             }
         },
-        "author": "Irene Mary Abraham",
-        "peripherals": [],
-        "keywords": [],
+        "author": "Microchip",
+        "peripherals": [
+		"DAC","CMP"
+		],
+        "keywords": ["Voltage Reference"],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
