@@ -3,6 +3,8 @@
 
 # Reference Voltage Generation using DAC of PIC18F57Q43 Microcontroller
 
+This code example demonstrates how to generate voltage reference to CMP using the built-in DAC peripheral of the PIC microcontroller. Some compatible PIC18F-Q43 family of MCUs are: PIC18F27Q43, PIC18F47Q43, PIC18F57Q43.
+
 ## Related Documentation
 
 - [PIC18F57Q43 Data Sheet](https://www.microchip.com/DS40002147)
