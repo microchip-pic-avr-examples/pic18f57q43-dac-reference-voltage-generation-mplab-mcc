@@ -38,7 +38,10 @@ A triangular wave of 3V peak to peak is generated using function generator which
   <img width=833 height=450 src="images/hardware_setup.png">
 </p>
 
-This demo is implemented using PIC18F57Q43 Curiosity Nano Evaluation Kit. Connect function generator output to pin RA0 of CNANO. Connect the same point to one of the analog channels of logic analyzer. Connect pin RA4 to a digital channel and pin RA2 to another analog channel of logic analyzer. The negative terminal of each channel, function generator GND and CNANO ground are connected for common GND. 
+This demo is implemented using PIC18F57Q43 Curiosity Nano Evaluation Kit. 
+- Connect function generator output to pin RA0 of CNANO. Connect the same point to one of the analog channels of logic analyzer. 
+- Connect pin RA4 to a digital channel and pin RA2 to another analog channel of logic analyzer. 
+- The negative terminal of each channel, function generator GND and CNANO ground are connected for common GND. 
 
 ## Pin Connection Table
 
@@ -76,7 +79,7 @@ Additional Links: [MCC Melody Technical Reference](https://onlinedocs.microchip.
 |    <br>Clock Control      |    <br>Clock source - HFINTOSC<br>HF Internal Clock - 4MHz<br>Clock Divider   – 4                                                                                                                                                                                                                                                                                                         |    <br>1 MHz System  clock                                                                     |
 |    <br>TMR4               |    <br>Enable Timer<br>Control Mode - Monostable <br>External Reset Source - T4CKIPPS pin<br>Start/Reset Option - Starts on falling edge on TMR_ers<br>Clock Source - MFINTOSC_31.25KHz<br>Polarity - Rising edge<br>Prescaler - 1:64<br>Postscaler - 1:1<br>Time Period - 0.1s<br>TMR Interrupt Enabled<br>                                                                                                                                                                   |    <br>Used in monostable mode to  automate switch debouncing  |
 |    <br>DAC1               |    <br>Enable DAC<br>Vdd - 3.3<br>DAC Positive reference selection - VDD<br>DAC Negative reference selection - VSS<br>DAC Output Enable Selection - DACOUT1 Enabled and DACOUT2 Disabled<br>   <br>     |    <br>Used to generate reference voltages to CMP<br>   <br>                            |
-|    <br>CMP                |   <br>Enable Comparator<br>Enable Synchronous Mode - asynchronous<br>Positive Input Selection - DACOUT<br>Negative Input Selection - CIN0-<br>Output Polarity - inverted<br> <br> |    <br>Used for lower and higher reference voltage detection<br>   <br>     |
+|    <br>CMP                |   <br>Enable Comparator<br>Enable Synchronous Mode - asynchronous<br>Positive Input Selection - DACOUT<br>Negative Input Selection - CIN0-<br>Output Polarity - inverted<br> <br> |    <br>Used to compare input voltage levels with the reference voltage<br>   <br>     |
 
 - **System Settings**
 
@@ -124,7 +127,7 @@ Additional Links: [MCC Melody Technical Reference](https://onlinedocs.microchip.
 
  **Pin Grid View**
  
-1.	Verify DAC output on pin RA2,CMP input (C1Inx-) on RA0 and CMP output on  RA4
+1.	Verify DAC output on pin RA2, CMP input (C1Inx-) on RA0 and CMP output on  RA4
 2.	Configure T4IN on pin RB4 
 3.	Configure pin RF3 as output for LED
 
@@ -147,4 +150,4 @@ Additional Links: [MCC Melody Technical Reference](https://onlinedocs.microchip.
 
 ## Summary
 
-A lower and higher reference voltages are generated using DAC peripheral of PIC18F57Q43 microcontroller which can be used for level sensing application using CMP.
+Reference voltages are generated using DAC peripheral of PIC18F57Q43 microcontroller which can be used in the applications where reference voltage should be compared with input voltage/input sensor voltage using CMP.
