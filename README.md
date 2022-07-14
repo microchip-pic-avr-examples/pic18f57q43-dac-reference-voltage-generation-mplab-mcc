@@ -8,7 +8,7 @@ This code example demonstrates how to generate voltage reference to CMP using th
 ## Related Documentation
 
 - [PIC18F57Q43 Data Sheet](https://www.microchip.com/DS40002147)
-- [8-bit PIC MCU Peripheral Deep Dive - DAC Chapter](https://mu.microchip.com/8-bit-pic-mcu-peripheral-deep-dive-pub)
+- [8-bit PIC MCU Peripheral Deep Dive](https://mu.microchip.com/8-bit-pic-mcu-peripheral-deep-dive-pub) (DAC Chapter)
 
 ## Objective
 
@@ -16,7 +16,7 @@ This application example highlights the usage of 8-bit DAC of PIC18F57Q43 as a r
 
 ![block_diagram](images/block_diagram.png)
 
-In this application, DAC is configured to use VDD as the positive reference and ground as the negative reference. On each switch press event, DAC data register is updated to generate the respective reference voltage. TMR4  is used in monostable mode to automate the switch debouncing. 
+In this application, DAC is configured to use VDD as the positive reference and ground as the negative reference. On each switch press event, DAC data register is updated to generate the respective reference voltage. TMR4  is used in monostable mode to automate the switch debouncing.
 
 A triangular wave of 3V peak to peak is generated using function generator which is connected to the negative channel of CMP. DAC output is connected to the positive channel of CMP. The CMP is configured in inverted polarity so that when triangular wave input is less than reference voltage, comparator gives a logic low output. When triangular wave input is greater than reference voltage, comparator gives a logic high output. Using the two reference voltages provided by DAC, two voltage levels can be detected using comparator. The reference voltage by DAC, function generator output and comparator output can be observed on oscilloscope/logic analyzer.
 
@@ -37,20 +37,20 @@ A triangular wave of 3V peak to peak is generated using function generator which
 
 ![hardware_setup](images/hardware_setup.png)
 
-This demo is implemented using PIC18F57Q43 Curiosity Nano Evaluation Kit. 
-- Connect function generator output to pin RA0 of CNANO. Connect the same point to one of the analog channels of logic analyzer. 
-- Connect pin RA4 to a digital channel and pin RA2 to another analog channel of logic analyzer. 
-- The negative terminal of each channel, function generator GND and CNANO ground are connected for common GND. 
+This demo is implemented using PIC18F57Q43 Curiosity Nano Evaluation Kit.
+- Connect function generator output to pin RA0 of CNANO. Connect the same point to one of the analog channels of logic analyzer.
+- Connect pin RA4 to a digital channel and pin RA2 to another analog channel of logic analyzer.
+- The negative terminal of each channel, function generator GND and CNANO ground are connected for common GND.
 
 ## Pin Connection Table
 
-|Microcontroller Pin| Signal Description | 
+|Microcontroller Pin| Signal Description |
 |:------------------:|:-----------------:|
-| RA0| CMP IN0- | 
-| RA4 |CMP Output | 
-| RA2 | DAC1 Buffered Output | 
-| RB4 | SW0 | 
-| RF3 | LED0 | 
+| RA0| CMP IN0- |
+| RA4 |CMP Output |
+| RA2 | DAC1 Buffered Output |
+| RB4 | SW0 |
+| RF3 | LED0 |
 
 ## Demo Operation
 
@@ -64,7 +64,7 @@ Now press the on-board switch. The LED toggles and reference voltage generated b
 
 ## Peripheral Configuration
 
-This section explains how to configure the peripherals using MPLAB X IDE with MCC plugin for recreation of the project. 
+This section explains how to configure the peripherals using MPLAB X IDE with MCC plugin for recreation of the project.
 
 Refer [Software Used section](https://github.com/microchip-pic-avr-examples/pic18f57q43-dac-reference-voltage-generation-mplab-mcc#software-used) to install required tools to recreate the project.
 
@@ -72,10 +72,10 @@ Additional Links: [MCC Melody Technical Reference](https://onlinedocs.microchip.
 
 | Peripherals               | Configuration                                                                                                                                                                                                                                                                                                                                                                                                  | Usage                                                                         |
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-|    <br>Clock Control      |    <br>Clock source - HFINTOSC<br>HF Internal Clock - 4MHz<br>Clock Divider   – 4                                                                                                                                                                                                                                                                                                         |    <br>1 MHz System  clock                                                                     |
-|    <br>TMR4               |    <br>Enable Timer<br>Control Mode - Monostable <br>External Reset Source - T4CKIPPS pin<br>Start/Reset Option - Starts on falling edge on TMR_ers<br>Clock Source - MFINTOSC_31.25KHz<br>Polarity - Rising edge<br>Prescaler - 1:64<br>Postscaler - 1:1<br>Time Period - 0.1s<br>TMR Interrupt Enabled<br>                                                                                                                                                                   |    <br>Used in monostable mode to  automate switch debouncing  |
-|    <br>DAC1               |    <br>Enable DAC<br>Vdd - 3.3<br>DAC Positive reference selection - VDD<br>DAC Negative reference selection - VSS<br>DAC Output Enable Selection - DACOUT1 Enabled and DACOUT2 Disabled<br>   <br>     |    <br>Used to generate reference voltages to CMP<br>   <br>                            |
-|    <br>CMP                |   <br>Enable Comparator<br>Enable Synchronous Mode - asynchronous<br>Positive Input Selection - DACOUT<br>Negative Input Selection - CIN0-<br>Output Polarity - inverted<br> <br> |    <br>Used to compare input voltage levels with the reference voltage<br>   <br>     |
+|    Clock Control      |    Clock source - HFINTOSC<br>HF Internal Clock - 4MHz<br>Clock Divider   – 4                                                                                                                                                                                                                                                                                                         |    1 MHz System  clock                                                                     |
+|    TMR4               |    Enable Timer<br>Control Mode - Monostable <br>External Reset Source - T4CKIPPS pin<br>Start/Reset Option - Starts on falling edge on TMR_ers<br>Clock Source - MFINTOSC_31.25KHz<br>Polarity - Rising edge<br>Prescaler - 1:64<br>Postscaler - 1:1<br>Time Period - 0.1s<br>TMR Interrupt Enabled<br>                                                                                                                                                                   |    Used in monostable mode to  automate switch debouncing  |
+|    DAC1               |    Enable DAC<br>Vdd - 3.3<br>DAC Positive reference selection - VDD<br>DAC Negative reference selection - VSS<br>DAC Output Enable Selection - DACOUT1 Enabled and DACOUT2 Disabled<br>   <br>     |    Used to generate reference voltages to CMP<br>   <br>                            |
+|    CMP                |   Enable Comparator<br>Enable Synchronous Mode - asynchronous<br>Positive Input Selection - DACOUT<br>Negative Input Selection - CIN0-<br>Output Polarity - inverted<br> <br> |    Used to compare input voltage levels with the reference voltage<br>   <br>     |
 
 - **System Settings**
 
@@ -85,35 +85,30 @@ Additional Links: [MCC Melody Technical Reference](https://onlinedocs.microchip.
 - **Add DAC, CMP and TMR4 peripherals**
 
 ![Peripherals](images/peripherals.png)
-
 <br />
 
 - **DAC**
- 
-![DAC](images/dac.png)
 
+![DAC](images/dac.png)
 <br />
 
 - **CMP**
 
 ![CMP](images/cmp.png)
-
 <br />
 
 - **TMR4**
- 
-![TMR4](images/tmr4.png)
 
+![TMR4](images/tmr4.png)
 <br />
 
- **Pin Grid View**
- 
+- **Pin Grid View**
+
 1.	Verify DAC output on pin RA2, CMP input (C1Inx-) on RA0 and CMP output on  RA4
-2.	Configure T4IN on pin RB4 
+2.	Configure T4IN on pin RB4
 3.	Configure pin RF3 as output for LED
 
 ![pins](images/pin_grid.png)
-
 <br />
 
 - **Pins**
@@ -122,7 +117,6 @@ Additional Links: [MCC Melody Technical Reference](https://onlinedocs.microchip.
 2.	Rename pin RF3 to LED0
 
 ![pins](images/pins.png)
-
 <br />
 
 ## Summary
